@@ -1,9 +1,14 @@
-const env = process.env.NODE_ENV || 'development';
+const express = require('express');
 
-const config = require('../config/config')[env];
-const app = require('express')();
+const config = require('./config');
 
-require('../config/express')(app);
-require('../config/routes')(app);
+const app = express();
 
-app.listen(config.port, console.log(`Listening on port ${config.port}! Now its up to you...`));
+// require('../config/express')(app);
+// require('../config/routes')(app);
+
+app.get('/', (req, res) => {
+    res.send('Home Page');
+});
+
+app.listen(config.port, () => console.log(`Listening on port ${config.port}...`));

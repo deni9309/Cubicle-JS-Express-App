@@ -1,9 +1,17 @@
 {
     "name": "cubicle-js-express-app",
-    "description": "description",
-    "authors": "author",
     "version": "1.0.0",
+    "description": "This project is part of Softuni JS-Back-End course.",
+    "authors": "",
     "main": "src/index.js",
+    "scripts": {
+        "start": "SET node_env=production&& node ./src/index.js",
+        "dev": "nodemon ./src/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/deni9309/Cubicle-JS-Express-App.git"
+    },
     "dependencies": {
         "body-parser": "^1.19.0",
         "express": "^4.17.1",
