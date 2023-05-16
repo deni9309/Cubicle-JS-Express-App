@@ -5,10 +5,12 @@ exports.getCreateCube = (req, res) => {
 };
 
 exports.postCreateCube = (req, res) => {
-    let cube = new Cube(req.body);
+    const { name, description, imageUrl, difficultyLevel } = req.body;
+    
+    let cube = new Cube(name, description, imageUrl, difficultyLevel);
 
     //save data
-    Cube.Save(cube);
+    Cube.save(cube);
 
     res.redirect('/');
 };

@@ -10,7 +10,7 @@ class Cube {
         this.difficultyLevel = difficultyLevel;
     }
 
-    static Save(cube) {
+    static save(cube) {
         db.cubes.push(cube);
         const jsonData = JSON.stringify(db, null, 2); // 'null, 2' options make json formatted
 

@@ -6,7 +6,7 @@ const setupViewEngine = require('./config/viewEngine'); // or after app initiali
 
 const app = express();
 setupViewEngine(app);
-app.use(express.static('./src/static')); // static files' location
+app.use(express.static('./src/static'));
 app.use(express.urlencoded({ extended: false }));
 app.use(routes);
 

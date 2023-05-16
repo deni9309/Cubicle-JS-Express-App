@@ -1,5 +1,7 @@
+const db = require('../db.json');
+
 exports.getHomePage = (req, res) => {
-    res.render('index', { title: 'Home' });
+    res.render('index', { title: 'Home', cubes: db.cubes });
 };
 
 exports.getAboutPage = (req, res) => {
