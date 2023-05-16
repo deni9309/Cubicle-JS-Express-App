@@ -1,14 +1,13 @@
 const express = require('express');
 
-const config = require('./config');
+const routes = require('./routes');
+const config = require('./config/config');
+const setupViewEngine = require('./config/viewEngine'); // or after app initialization use only this: require('./config/viewEngine')(app);
 
 const app = express();
-
-// require('../config/express')(app);
-// require('../config/routes')(app);
-
-app.get('/', (req, res) => {
-    res.send('Home Page');
-});
+setupViewEngine(app);
+app.use(express.static('./src/static')); // static files' location
+app.use(express.urlencoded({ extended: false }));
+app.use(routes);
 
 app.listen(config.port, () => console.log(`Listening on port ${config.port}...`));
