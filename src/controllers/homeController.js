@@ -1,14 +1,23 @@
 const db = require('../db.json');
 
 exports.getHomePage = (req, res) => {
-    const { search, from, to } = req.query;
+    const { search, from: difficultyFrom, to: difficultyTo } = req.query;
     let cubes = db.cubes;
+
     if (search) {
         cubes = cubes.filter(x => x.name.toLowerCase()
             .includes(search.toLowerCase()));
     }
 
-    res.render('index', { title: 'Home', cubes });
+    if (difficultyFrom) {
+        cubes = cubes.filter(x => x.difficultyLevel >= difficultyFrom);
+    }
+
+    if (difficultyTo) {
+        cubes = cubes.filter(x => x.difficultyLevel <= difficultyTo);
+    }
+
+    res.render('index', { title: 'Home', cubes, search, difficultyFrom, difficultyTo });
 };
 
 exports.getAboutPage = (req, res) => {
